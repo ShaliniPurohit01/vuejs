@@ -602,3 +602,32 @@ new Vue({
   computed: {}
 });
 ```
+
+# Reference using \$ref
+
+```js
+new Vue({
+  el: "#vue-div-one",
+  data: {
+    output: "your fav food"
+  },
+  method: {
+    readRefs: function() {
+      console.log(this.$refs.input.value);
+      this.output = this.$refs.input.value;
+    }
+  },
+  computed: {}
+});
+```
+
+```html
+<div>
+  <div id="vue-div-one">
+    <h2>Refs</h2>
+    <input type="text" ref="input" />
+    <button v-on:click="readRefs">Submit</button>
+    <p>Your fav food : {{output}}</p>
+  </div>
+</div>
+```

@@ -268,3 +268,36 @@ new Vue({
 ```
 
 # computed properties
+
+- if we put functions into method, then if we click one of the button, both the button will work
+- if we put the functions in computed field, then only that button will work which was clicked
+
+```html
+<div>
+  <button v-on:click="a++">add to A</button>
+  <button v-on:click="b++">add to B</button>
+  <p>Age + A ={{addToA}}</p>
+  <p>Age + B ={{addToB}}</p>
+</div>
+```
+
+```js
+new Vue({
+  el: "#vue-div",
+  data: {
+    age: 20,
+    a:0,
+    b:0
+  },
+  computed:{
+    addToA:function{
+      return this.a +this.age;
+    },
+    addToB:function{
+      return this.b +this.age;
+    }
+  }
+});
+```
+
+# dynamic CSS

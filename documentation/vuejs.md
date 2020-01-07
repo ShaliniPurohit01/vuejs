@@ -157,4 +157,114 @@ new Vue({
 ```
 
 ## Events
-<>
+
+- v-on: directive is used for handling mouse events
+- @click
+
+```html
+<button v-on:click="age++">add</button>
+<p>{{age}}</p>
+```
+
+- or we can use methods without ()
+
+```js
+new Vue({
+  el: "#vue-div",
+  data:{
+    age:25
+  },
+  method: {
+      add:function(){
+        this.age++;
+      }
+    }
+  }
+});
+```
+
+```html
+<button v-on:click="add">add</button>
+<p>{{age}}</p>
+```
+
+- doubleclick event
+- v-on:dblclick
+- @dblclick
+
+- v-on:mousemove
+
+```js
+new Vue({
+  el: "#vue-div",
+  data:{
+    age:25
+  },
+  method: {
+    update:function(event){
+        this.x=event.offsetX;
+      }
+    }
+  }
+});
+```
+
+```html
+<div v-on:mousemove="update">{{x}}</div>
+```
+
+## event modifiers
+
+- once
+- stop
+- prevent
+- capture
+- self
+
+```html
+<button v-on:click.once="age++">add</button>
+<p>{{age}}</p>
+```
+
+# keyboard events
+
+- keydown
+- keypress
+- keyup
+- with modifiers like
+- .enter
+- .tab
+- .delte
+- .esc
+- .up
+- .down
+- .left
+- .right etc
+
+```html
+<input type="text" v-on:keyup.enter="logName" />
+<input type="text" v-on:keyup.alt.enter="logAge" />
+```
+
+# 2 way data binding
+
+- v-model
+
+```html
+<input type="text" v-madel="name" />
+<span>{{name}}</span>
+<input type="text" v-model="age" />
+<span>{{age}}</span>
+```
+
+```js
+new Vue({
+  el: "#vue-div",
+  data: {
+    name: "",
+    age: ""
+  }
+});
+```
+
+# computed properties

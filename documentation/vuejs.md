@@ -436,3 +436,85 @@ new Vue({
 ```
 
 ## multiple vue instances
+
+```html
+<div>
+  <div id="vue-div-one">
+    <h1>{{title}}</h1>
+    <p>{{greet}}</p>
+  </div>
+
+  <div id="vue-div-two">
+    <h1>{{title}}</h1>
+    <p>{{greet}}</p>
+  </div>
+</div>
+```
+
+```js
+var one = new Vue({
+  el: "#vue-div-one",
+  data: {
+    title: "vue app one"
+  },
+  method: {},
+  computed: {
+    greet:function{
+      return "hello from vue one";
+    }
+  }
+});
+
+var two = new Vue({
+  el: "#vue-div-two",
+  data: {
+    title: "vue app two"
+  },
+  method: {},
+  computed: {
+    greet:function{
+      return "hello from vue 2";
+    }
+  }
+});
+```
+
+- communicating between 2 vue instances
+
+```html
+<div>
+  <div id="vue-div-one">
+    <h1>{{title}}</h1>
+  </div>
+
+  <div id="vue-div-two">
+    <h1>{{title}}</h1>
+    <button v-on:click="changeTitle">A change on app one title</button>
+  </div>
+</div>
+```
+
+```js
+var one = new Vue({
+  el: "#vue-div-one",
+  data: {
+    title: "vue app one"
+  },
+  method: {},
+  computed: {}
+});
+
+var two = new Vue({
+  el: "#vue-div-two",
+  data: {
+    title: "vue app two"
+  },
+  method: {
+    changeTitle: function() {
+      one.title = "title changes for one";
+    }
+  },
+  computed: {}
+});
+two.title = "title changes from outside for two";
+```

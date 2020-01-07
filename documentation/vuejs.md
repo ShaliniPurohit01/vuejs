@@ -518,3 +518,87 @@ var two = new Vue({
 });
 two.title = "title changes from outside for two";
 ```
+
+# Components
+
+```html
+<div>
+  <div id="vue-div-one">
+    <greeting> </greeting>
+  </div>
+
+  <div id="vue-div-two">
+    <greeting> </greeting>
+  </div>
+</div>
+```
+
+```js
+Vue.component('greeting',{
+  template:'<p> Hey.. {{name}}. <button v-on:click="changeName">Change Name</button></p>',
+  data:function(){
+    return{
+      name:'shaily'
+    }
+  },
+  method: {
+    changeName:function(){
+      this.name='mario';
+    }
+  }
+
+  }
+})
+new Vue({
+  el: "#vue-div-one",
+  data: {},
+  method: {},
+  computed: {}
+});
+
+new Vue({
+  el: "#vue-div-two",
+  data: {
+  },
+  method: { },
+  computed: {}
+});
+```
+
+- OR
+
+```js
+var data={
+  name:'Yoshi'
+}
+Vue.component('greeting',{
+  template:'<p> Hey.. {{name}}. <button v-on:click="changeName">Change Name</button></p>',
+  data:function(){
+    return data
+    },
+  method: {
+    changeName:function(){
+      this.name='mario';
+    }
+  }
+
+  }
+})
+new Vue({
+  el: "#vue-div-one",
+  data: {},
+  method: {},
+  computed: {}
+});
+
+new Vue({
+  el: "#vue-div-two",
+  data: {
+  },
+  method: {
+
+    }
+  },
+  computed: {}
+});
+```

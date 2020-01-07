@@ -396,3 +396,43 @@ new Vue({
   computed: {}
 });
 ```
+
+# looping
+
+```html
+<div>
+  <ul>
+    <li v-for="c in characters">{{c}}</li>
+    <li v-for="n in ninjas">{{n.name}}- {{n.age}}</li>
+    <!-- show with index  value-->
+    <li v-for="(n, index) in ninjas">{{index}}.{{n.name}}- {{n.age}}</li>
+  </ul>
+
+  <!-- loop through objects -->
+  <template v-for="n nn ninjas">
+    <div v-for="(val,key) in ninjas">
+      <p>
+        {{key}} - {{val}}
+      </p>
+    </div>
+  </template>
+</div>
+```
+
+```js
+new Vue({
+  el: "#vue-div",
+  data: {
+    characters: ["Mario", "Lugi", "Yoshi"],
+    ninjas: [
+      { name: "shaily", age: 23 },
+      { name: "Jay", age: 18 },
+      { name: "xyz", age: 20 }
+    ]
+  },
+  method: {},
+  computed: {}
+});
+```
+
+## multiple vue instances

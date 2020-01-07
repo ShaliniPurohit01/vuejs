@@ -118,7 +118,7 @@ new Vue({
 </div>
 ```
 
-- correct method is to use **\*v-bind** which will bind dynaic content of the attributes
+- correct method is to use **v-bind** which will bind dynaic content of the attributes
 
 ```html
 <div id="vue-div">
@@ -128,7 +128,6 @@ new Vue({
   <a :href="website"></a>
   <!-- or -->
   <input type="text" v-bind:value="name" />
-  >
 </div>
 ```
 
@@ -301,3 +300,99 @@ new Vue({
 ```
 
 # dynamic CSS
+
+- normal css
+
+```html
+<div>
+  <div v-bind:class="{ red:true, blue:false }"></div>
+  <!-- red will become its class-->
+</div>
+```
+
+- dynamic
+
+```html
+<div>
+  <div v-on:click="available = !available" v-bind:class="{available}">
+    <span>shaily</span>
+  </div>
+</div>
+```
+
+```js
+new Vue({
+  el: "#vue-div",
+  data: {
+    available: false
+  },
+  method: {},
+  computed: {}
+});
+```
+
+- other example
+
+```html
+<div>
+  <button v-on:click="nearby = !nearby">toggle nearby</button>
+  <button v-on:click="available = !available">toggle available</button>
+  <div v-bind:class="compClasses">
+    <span>Shaily</span>
+  </div>
+</div>
+```
+
+```js
+new Vue({
+  el: "#vue-div",
+  data: {
+    available: false,
+    nearby:false
+  },
+  method: {},
+  computed: {
+    compClasses:function{
+      return{
+        available:this.available,
+        nearby:this.nearby
+      }
+    }
+  }
+});
+```
+
+# conditionals
+
+- v-if and v-show
+- v-if and v-show works same the only diffrence is that v-show will set display property to none if the value is false
+- if will not take that object from dome
+
+```html
+<div>
+  <button v-on:click="error = !error">Error</button>
+  <button v-on:click="success=!success">Success</button>
+  <p v-if="error">There has been an error</p>
+  <p v-if="success">!!! Success !!!</p>
+
+  <!-- OR -->
+  <p v-if="error">There has been an error</p>
+  <p v-else-if="success">!!! Success !!!</p>
+
+  <!-- Or -->
+  <p v-show="error">There has been an error</p>
+  <p v-show="success">!!! Success !!!</p>
+</div>
+```
+
+```js
+new Vue({
+  el: "#vue-div",
+  data: {
+    error: false,
+    success: false
+  },
+  method: {},
+  computed: {}
+});
+```
